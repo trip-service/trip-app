@@ -7,10 +7,12 @@
         "android": "expo start --android",
         "ios": "expo start --ios",
         "web": "expo start --web",
-        "eject": "expo eject"
+        "eject": "expo eject",
+        "commit": "npx gcz"
     },
     "dependencies": {
         "@react-native-async-storage/async-storage": "~1.17.3",
+        "@react-navigation/bottom-tabs": "^6.3.1",
         "@react-navigation/native": "^6.0.10",
         "@react-navigation/native-stack": "^6.6.2",
         "axios": "^0.27.2",
