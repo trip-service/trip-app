@@ -1,24 +1,11 @@
-// In index.js of a new project
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import TasksScreen from '../TasksScreen';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+import HomeScreen from './view';
 
-const Tab = createBottomTabNavigator();
-
-const HomeScreen = (props) => {
-
-  return (
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Tasks"
-          component={TasksScreen}
-          options={{
-            tabBarIcon: ({size, color}) => (<FontAwesome name={"search"} color={color} size={size} />)
-        }}
-        />
-      </Tab.Navigator>
-  );
+const mapStateToProps = () => {
+  return {};
 };
 
-export default HomeScreen;
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
