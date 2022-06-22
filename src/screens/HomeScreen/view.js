@@ -8,15 +8,17 @@ const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
   return (
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Tasks"
-          component={TasksScreen}
-          options={{
-            tabBarIcon: ({size, color}) => (<FontAwesome name={"search"} color={color} size={size} />)
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Tasks"
+        component={TasksScreen}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <FontAwesome name={'search'} color={color} size={size} />
+          ),
         }}
-        />
-      </Tab.Navigator>
+      />
+    </Tab.Navigator>
   );
 };
 

@@ -5,11 +5,11 @@ const sleep = (ms = 1000) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve();
-    }, ms)
-  })
-}
+    }, ms);
+  });
+};
 
-const okAdd = (newTask) => ({
+const okAdd = newTask => ({
   type: types.ADD_TASK_SUCCESS,
   payload: newTask,
 });
@@ -18,8 +18,8 @@ const errAdd = ({ message }) => {
   return {
     type: types.ADD_TASK_ERROR,
     payload: {
-      message
-    }
+      message,
+    },
   };
 };
 
@@ -37,7 +37,7 @@ export function* addTaskSaga({ payload }) {
   }
 }
 
-const okUpdate = (newTask) => ({
+const okUpdate = newTask => ({
   type: types.UPDATE_TASK_SUCCESS,
   payload: newTask,
 });
@@ -46,8 +46,8 @@ const errUpdate = ({ message }) => {
   return {
     type: types.UPDATE_TASK_ERROR,
     payload: {
-      message
-    }
+      message,
+    },
   };
 };
 
@@ -62,7 +62,7 @@ export function* updateTaskSaga({ payload }) {
   }
 }
 
-const okDelete = (newTask) => ({
+const okDelete = newTask => ({
   type: types.DELETE_TASK_SUCCESS,
   payload: newTask,
 });
@@ -71,8 +71,8 @@ const errDelete = ({ message }) => {
   return {
     type: types.DELETE_TASK_ERROR,
     payload: {
-      message
-    }
+      message,
+    },
   };
 };
 

@@ -2,11 +2,11 @@ import {
   startFetchingAction,
   stopFetchingAction,
 } from '~/actions/globalAreaActions';
-import {basicAsyncActionTypes} from '~/constants/actionTypes';
+import { basicAsyncActionTypes } from '~/constants/actionTypes';
 
 const responseRegExp = /_SUCCESS|_ERROR/;
 
-export const startFetchingMiddleware = (store) => (next) => (action) => {
+export const startFetchingMiddleware = store => next => action => {
   const isBasicAsyncAction = basicAsyncActionTypes.includes(action.type);
 
   if (isBasicAsyncAction) {
@@ -15,7 +15,7 @@ export const startFetchingMiddleware = (store) => (next) => (action) => {
   return next(action);
 };
 
-export const stopFetchingMiddleware = (store) => (next) => (action) => {
+export const stopFetchingMiddleware = store => next => action => {
   const isResponseAction = responseRegExp.test(action.type);
   const basicType = action.type.replace(responseRegExp, '');
   const isBasicAsyncAction = basicAsyncActionTypes.includes(basicType);

@@ -7,5 +7,5 @@ export const authState = {
 };
 
 export const taskState = {
-  list: []
+  list: [],
 };

@@ -1,18 +1,6 @@
-import {fork, all, takeLatest} from 'redux-saga/effects';
-import types, {basicAsyncActionTypes} from '~/constants/actionTypes';
-import {toCamelStyle} from '~/utils/format';
+import { fork, all } from 'redux-saga/effects';
 
-import * as Watchers from "./watchers";
-
-
-const allSaga = {
-};
-
-const getMatchedSaga = (actionType) => {
-  const camelActionType = toCamelStyle(actionType);
-  const matchedSaga = allSaga[`${camelActionType}Saga`];
-  return matchedSaga || null;
-};
+import * as Watchers from './watchers';
 
 export default function* startForman() {
   let sagas = [];
