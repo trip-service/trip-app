@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "trip-app",
-    "slug": "trip-app",
+    "name": "camel-trip-tw",
+    "slug": "camel-trip-tw",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,13 +21,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.camel.trip",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.camel.trip",
+      "versionCode": 1,
+      "serviceAccountKeyPath": "./pc-api-7401543014264783862-888-f77aef5a0103.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
