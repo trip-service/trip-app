@@ -1,5 +1,5 @@
-import { put, select, call } from 'redux-saga/effects';
-import { isFunction, isEmpty } from 'lodash';
+import { isEmpty, isFunction } from 'lodash';
+import { call, put, select } from 'redux-saga/effects';
 
 const okFetch = (payload, actionType, message) => {
   const successPayload = {

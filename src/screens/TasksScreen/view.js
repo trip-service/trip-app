@@ -1,20 +1,20 @@
 // In index.js of a new project
-import React from 'react';
-import {
-  Input,
-  IconButton,
-  Checkbox,
-  Text,
-  Box,
-  VStack,
-  HStack,
-  Heading,
-  Icon,
-  Center,
-  useToast,
-} from 'native-base';
-import Feather from '@expo/vector-icons/Feather';
 import Entypo from '@expo/vector-icons/Entypo';
+import Feather from '@expo/vector-icons/Feather';
+import {
+  Box,
+  Center,
+  Checkbox,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Input,
+  Text,
+  useToast,
+  VStack,
+} from 'native-base';
+import React from 'react';
 
 const instState = [
   {

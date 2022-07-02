@@ -1,7 +1,9 @@
+import { actionChannel, call, take, takeLatest } from 'redux-saga/effects';
+
 import types from '~/constants/actionTypes';
-import { takeLatest, take, call, actionChannel } from 'redux-saga/effects';
+
 import { loginSaga, logoutSaga } from './authSagas';
-import { addTaskSaga, updateTaskSaga, deleteTaskSaga } from './taskSagas';
+import { addTaskSaga, deleteTaskSaga, updateTaskSaga } from './taskSagas';
 
 export function* watchAddTaskSaga() {
   const taskChain = yield actionChannel(types.ADD_TASK);

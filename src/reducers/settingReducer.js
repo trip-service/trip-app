@@ -1,4 +1,5 @@
 import types from '~/constants/actionTypes';
+
 import { settingState } from './initialState';
 
 const stopFetching = (setting, payload) => {

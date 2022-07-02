@@ -1,5 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep';
+
 import types from '~/constants/actionTypes';
+
 import { taskState } from './initialState';
 
 const updateTaskSuccess = (task, payload) => {

@@ -1,4 +1,5 @@
 import { put } from 'redux-saga/effects';
+
 import types from '~/constants/actionTypes';
 
 const sleep = (ms = 1000) => {

@@ -1,17 +1,17 @@
 // In index.js of a new project
-import React from 'react';
 import {
   Box,
-  Text,
-  Heading,
-  VStack,
+  Button,
+  Center,
   FormControl,
+  Heading,
+  HStack,
   Input,
   Link,
-  Button,
-  HStack,
-  Center,
+  Text,
+  VStack,
 } from 'native-base';
+import React from 'react';
 
 const SignupScreen = () => {
   return (
