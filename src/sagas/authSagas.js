@@ -1,4 +1,5 @@
 import { put } from 'redux-saga/effects';
+
 import types from '~/constants/actionTypes';
 
 const okLogin = () => ({
@@ -10,8 +11,8 @@ const errLogin = ({ message }) => {
   return {
     type: types.LOGIN_ERROR,
     payload: {
-      message
-    }
+      message,
+    },
   };
 };
 
@@ -32,14 +33,13 @@ const errLogout = ({ message }) => {
   return {
     type: types.LOGOUT_ERROR,
     payload: {
-      message
-    }
+      message,
+    },
   };
 };
 
 export function* logoutSaga() {
   try {
-    
     yield put(okLogout());
   } catch (error) {
     const errorAction = errLogout(error);

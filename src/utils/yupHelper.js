@@ -7,7 +7,7 @@ export const handleYupErrors = errors => {
     const message = nextError.message;
     return {
       ...currentError,
-      [name]: message
-    }
-  }, {})
-}
+      [name]: message,
+    };
+  }, {});
+};

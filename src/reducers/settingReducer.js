@@ -1,21 +1,22 @@
 import types from '~/constants/actionTypes';
-import {settingState} from './initialState';
+
+import { settingState } from './initialState';
 
 const stopFetching = (setting, payload) => {
-  const {fetchingTypes} = setting;
+  const { fetchingTypes } = setting;
   const nextFetchingTypes = {};
 
-  Object.keys(fetchingTypes).forEach((key) => {
+  Object.keys(fetchingTypes).forEach(key => {
     if (key !== payload) {
       fetchingTypes[key] = 'LOADING';
     }
   });
 
-  return {...setting, fetchingTypes: nextFetchingTypes};
+  return { ...setting, fetchingTypes: nextFetchingTypes };
 };
 
 const startFetching = (setting, payload) => {
-  const nextFetchingTypes = {...setting.fetchingTypes, [payload]: 'LOADING'};
+  const nextFetchingTypes = { ...setting.fetchingTypes, [payload]: 'LOADING' };
   return {
     ...setting,
     fetchingTypes: nextFetchingTypes,
@@ -24,7 +25,7 @@ const startFetching = (setting, payload) => {
 
 export default function routeReducer(
   setting = settingState,
-  {type, payload},
+  { type, payload }
 ) {
   switch (type) {
     case types.START_FETCHING:

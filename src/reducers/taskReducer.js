@@ -1,9 +1,11 @@
 import cloneDeep from 'lodash/cloneDeep';
+
 import types from '~/constants/actionTypes';
-import {taskState} from './initialState';
+
+import { taskState } from './initialState';
 
 const updateTaskSuccess = (task, payload) => {
-  const {index, ...nextTask} = payload;
+  const { index, ...nextTask } = payload;
   const nextTaskList = cloneDeep(task.list);
   nextTaskList[index] = nextTask;
   return {
@@ -11,7 +13,7 @@ const updateTaskSuccess = (task, payload) => {
     list: [...nextTaskList],
   };
 };
-export default function reducer(task = taskState, {type, payload}) {
+export default function reducer(task = taskState, { type, payload }) {
   switch (type) {
     case types.ADD_TASK_SUCCESS:
       return {

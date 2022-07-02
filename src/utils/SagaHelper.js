@@ -1,5 +1,5 @@
-import {put, select, call} from 'redux-saga/effects';
-import {isFunction, isEmpty} from 'lodash';
+import { isEmpty, isFunction } from 'lodash';
+import { call, put, select } from 'redux-saga/effects';
 
 const okFetch = (payload, actionType, message) => {
   const successPayload = {
@@ -16,25 +16,25 @@ const okFetch = (payload, actionType, message) => {
   return successPayload;
 };
 
-const errFetch = ({code, message: text}, actionType) => ({
+const errFetch = ({ code, message: text }, actionType) => ({
   type: `${actionType}_ERROR`,
-  payload: {code, text},
+  payload: { code, text },
   snackbar: {
     type: 'danger',
     text,
   },
 });
 
-const parseError = (error) => {
-  const {response} = error;
+const parseError = error => {
+  const { response } = error;
 
   if (isEmpty(response)) return error;
 
-  const {data: resData} = response;
+  const { data: resData } = response;
   return resData.data;
 };
 
-const getBodyAndHeaders = ({type, payload, token, headers}) => {
+const getBodyAndHeaders = ({ type, payload, token, headers }) => {
   const bearerToken = `Bearer ${token}`;
   if (type === 'FORM') {
     return {
@@ -67,20 +67,20 @@ export default function* fetchAPIResult({
   resultHandler = null,
 }) {
   try {
-    const token = yield select(({auth}) => auth.token);
+    const token = yield select(({ auth }) => auth.token);
 
-    const {params, newHeaders} = getBodyAndHeaders({
+    const { params, newHeaders } = getBodyAndHeaders({
       type,
       payload,
       token,
       headers,
     });
 
-    const {data: resData} = yield call(apiResult, params, newHeaders);
+    const { data: resData } = yield call(apiResult, params, newHeaders);
 
     if (isFunction(resultHandler)) {
       return yield put(
-        okFetch(resultHandler(resData.data), actionType, message),
+        okFetch(resultHandler(resData.data), actionType, message)
       );
     }
 

@@ -1,4 +1,4 @@
-
+/* eslint-disable no-undef */
 export const LOGIN_COMPONENT = {
   name: 'Login',
   options: {

@@ -1,20 +1,20 @@
 // In index.js of a new project
-import React, {useState} from 'react';
-import {
-  Input,
-  IconButton,
-  Checkbox,
-  Text,
-  Box,
-  VStack,
-  HStack,
-  Heading,
-  Icon,
-  Center,
-  useToast,
-} from 'native-base';
-import Feather from '@expo/vector-icons/Feather';
 import Entypo from '@expo/vector-icons/Entypo';
+import Feather from '@expo/vector-icons/Feather';
+import {
+  Box,
+  Center,
+  Checkbox,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Input,
+  Text,
+  useToast,
+  VStack,
+} from 'native-base';
+import React from 'react';
 
 const instState = [
   {
@@ -35,11 +35,11 @@ const instState = [
   },
 ];
 
-const TasksScreen = (props) => {
+const TasksScreen = () => {
   const [list, setList] = React.useState(instState);
   const [inputValue, setInputValue] = React.useState('');
   const toast = useToast();
-  const addItem = (title) => {
+  const addItem = title => {
     if (title === '') {
       toast.show({
         title: 'Please Enter Text',
@@ -48,7 +48,7 @@ const TasksScreen = (props) => {
       return;
     }
 
-    setList((prevList) => {
+    setList(prevList => {
       return [
         ...prevList,
         {
@@ -59,15 +59,15 @@ const TasksScreen = (props) => {
     });
   };
 
-  const handleDelete = (index) => {
-    setList((prevList) => {
+  const handleDelete = index => {
+    setList(prevList => {
       const temp = prevList.filter((_, itemI) => itemI !== index);
       return temp;
     });
   };
 
-  const handleStatusChange = (index) => {
-    setList((prevList) => {
+  const handleStatusChange = index => {
+    setList(prevList => {
       const newList = [...prevList];
       newList[index].isCompleted = !newList[index].isCompleted;
       return newList;
@@ -84,7 +84,7 @@ const TasksScreen = (props) => {
           <HStack space={2}>
             <Input
               flex={1}
-              onChangeText={(v) => setInputValue(v)}
+              onChangeText={v => setInputValue(v)}
               value={inputValue}
               placeholder="Add Task"
             />
@@ -106,12 +106,14 @@ const TasksScreen = (props) => {
                 w="100%"
                 justifyContent="space-between"
                 alignItems="center"
-                key={item.title + itemI.toString()}>
+                key={item.title + itemI.toString()}
+              >
                 <Checkbox
                   accessibilityLabel="This is a task checkbox"
                   isChecked={item.isCompleted}
                   onChange={() => handleStatusChange(itemI)}
-                  value={item.title}></Checkbox>
+                  value={item.title}
+                ></Checkbox>
                 <Text
                   width="100%"
                   flexShrink={1}
@@ -124,7 +126,8 @@ const TasksScreen = (props) => {
                   _dark={{
                     color: item.isCompleted ? 'gray.400' : 'coolGray.50',
                   }}
-                  onPress={() => handleStatusChange(itemI)}>
+                  onPress={() => handleStatusChange(itemI)}
+                >
                   {item.title}
                 </Text>
                 <IconButton
