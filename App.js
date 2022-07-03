@@ -7,16 +7,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import HomeScreen from '~/screens/HomeScreen';
 import store, { persistor } from '~/store/configureStore';
-import LightTHeme from '~/themes/light.theme';
+import LightTheme from '~/themes/light.theme';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <PaperProvider theme={LightTHeme}>
+    <PaperProvider theme={LightTheme}>
+      <NavigationContainer theme={LightTheme}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
             <Stack.Navigator>
               <Stack.Screen
                 name="Home"
@@ -24,9 +24,9 @@ export default function App() {
                 component={HomeScreen}
               />
             </Stack.Navigator>
-          </PaperProvider>
-        </PersistGate>
-      </Provider>
-    </NavigationContainer>
+          </PersistGate>
+        </Provider>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }

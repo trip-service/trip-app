@@ -5,7 +5,7 @@ const black = '#333333';
 const white = '#ffffff';
 
 const background = {
-  default: '#EEEEEE',
+  default: '#FAFAFA',
   paper: white,
 };
 
@@ -18,26 +18,31 @@ const text = {
 const primary = {
   main: '#FFD4AC',
   light: '#F7E6CA',
+  contrastText: black,
 };
 
 const secondary = {
   main: '#52D2D9',
   light: '#b3eced',
+  contrastText: black,
 };
 
 const info = {
   main: '#26648B',
   light: '#4F8FBF',
+  contrastText: black,
 };
 
 const error = {
-  main: '#d95952',
+  main: '#26648B',
   light: '#d27573',
+  contrastText: black,
 };
 
 const success = {
-  main: '#00cf86',
+  main: '#75cfbf',
   light: '#52d99c',
+  contrastText: black,
 };
 
 const LightTheme = {
@@ -57,7 +62,12 @@ const LightTheme = {
     placeholder: text.placeholder,
     backdrop: color(black).alpha(0.5).rgb().string(),
     notification: error.main,
+
+    // navigation
+    border: color(black).alpha(0.5).rgb().string(),
+    card: white,
   },
+
   // customize
   palette: {
     primary,
