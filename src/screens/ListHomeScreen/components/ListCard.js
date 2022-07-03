@@ -56,6 +56,8 @@ function CoverDisplay({ cover, style }) {
 }
 
 function TagsDisplay({ tags }) {
+  if (!tags || tags.length === 0) return null;
+
   return (
     <View style={styles.tags}>
       {tags.map(tag => (
@@ -82,7 +84,7 @@ const getSubscribersText = subscribers => {
 function VariantsDisplay({ variants }) {
   const theme = useTheme();
 
-  if (!variants) return null;
+  if (!variants || variants.length === 0) return null;
 
   return (
     <View style={styles.variants}>
