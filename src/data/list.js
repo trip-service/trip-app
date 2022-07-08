@@ -110,3 +110,27 @@ export const FAKE_LIST = [
     ],
   },
 ];
+
+export const FAKE_SEARCH_LIST = [
+  {
+    id: '1',
+    title:
+      '這邊可以放已購買的規劃行程或是之前的規劃行程，然後上方可以查詢關鍵字',
+  },
+  {
+    id: '2',
+    title: 'Et, nunc mollis sed a.',
+  },
+  {
+    id: '3',
+    title: 'Nibh donec ipsum sem sed pulvinar ipsum eget eu magna.',
+  },
+  {
+    id: '4',
+    title: 'Sed ut nullam gravida vel, adipiscing.',
+  },
+  {
+    id: '5',
+    title: 'Sed ut nullam gravida vel, adipiscing.',
+  },
+];

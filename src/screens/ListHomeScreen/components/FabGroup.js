@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { FAB, Portal, Provider } from 'react-native-paper';
+import { FAB } from 'react-native-paper';
 
-export default function FabGroup() {
+export default function FabGroup({ onAdd, onImport }) {
   const [state, setState] = useState({ open: false });
 
   const onStateChange = ({ open }) => setState({ open });
@@ -9,23 +10,19 @@ export default function FabGroup() {
   const { open } = state;
 
   return (
-    <Provider>
-      <Portal>
-        <FAB.Group
-          open={open}
-          icon={open ? 'close' : 'plus'}
-          actions={[
-            { icon: 'plus', onPress: () => console.log('Pressed add') },
-            { icon: 'import', onPress: () => console.log('Pressed add') },
-          ]}
-          onStateChange={onStateChange}
-          onPress={() => {
-            if (open) {
-              // do something if the speed dial is open
-            }
-          }}
-        />
-      </Portal>
-    </Provider>
+    <FAB.Group
+      open={open}
+      icon={open ? 'close' : 'plus'}
+      actions={[
+        { icon: 'plus', onPress: onAdd },
+        { icon: 'import', onPress: onImport },
+      ]}
+      onStateChange={onStateChange}
+    />
   );
 }
+
+FabGroup.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+  onImport: PropTypes.func.isRequired,
+};

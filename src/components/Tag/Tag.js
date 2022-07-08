@@ -6,7 +6,7 @@ import { Text, useTheme } from 'react-native-paper';
 export default function Tag({ text, style, type = 'primary' }) {
   const theme = useTheme();
   const colors = theme.palette[type];
-  console.log(colors);
+
   return (
     <View style={[styles.root, { backgroundColor: colors.main }, style]}>
       <Text style={[{ color: colors.contrastText }]}>{text}</Text>

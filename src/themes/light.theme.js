@@ -3,6 +3,7 @@ import { DefaultTheme } from 'react-native-paper';
 
 const black = '#333333';
 const white = '#ffffff';
+const outline = '#D9D9D9';
 
 const background = {
   default: '#FAFAFA',
@@ -79,6 +80,7 @@ const LightTheme = {
     white,
     background,
     text,
+    outline,
   },
   animation: {
     scale: 1.0,
