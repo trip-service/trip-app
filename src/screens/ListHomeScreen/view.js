@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import FixedBottomSheet from '~/components/FixedBottomSheet';
 import Gap from '~/components/Gap';
 import Screen from '~/components/Screen';
 import SearchBar from '~/components/SearchBar';
@@ -19,7 +18,6 @@ const renderItem = ({ item }) => {
 
 export default function ListHomeScreen() {
   const [sheetOpen, setSheetOpen] = useState(null);
-  const sheetRef = useRef(null);
 
   const handleAdd = () => {
     setSheetOpen('add');
@@ -29,21 +27,8 @@ export default function ListHomeScreen() {
     setSheetOpen('import');
   };
 
-  useEffect(() => {
-    if (sheetOpen) {
-      sheetRef.current.snapToIndex(0);
-    }
-  }, [sheetOpen]);
-
-  const handleClosePress = () => {
-    setSheetOpen(null);
-    sheetRef.current.close();
-  };
-
   const handleChange = ev => {
-    if (ev === -1) {
-      setSheetOpen(null);
-    }
+    if (ev === -1) setSheetOpen(null);
   };
 
   return (
@@ -60,14 +45,7 @@ export default function ListHomeScreen() {
         </View>
         <FabGroup onAdd={handleAdd} onImport={handleImport} />
       </Screen>
-      <FixedBottomSheet
-        ref={sheetRef}
-        index={-1}
-        height={sheetOpen === 'add' ? 170 : '100%'}
-        onChange={handleChange}
-      >
-        <BottomForms type={sheetOpen} onClose={handleClosePress} />
-      </FixedBottomSheet>
+      {!!sheetOpen && <BottomForms type={sheetOpen} onChange={handleChange} />}
     </>
   );
 }

@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import { Subheading, Text, useTheme } from 'react-native-paper';
 
-function TextFieldLabel({ label }) {
+export function TextFieldLabel({ label }) {
   if (!label) return null;
 
   return <Subheading style={styles.label}>{label}</Subheading>;
 }
 
-function TextFieldHelperText({ helperText = '', keepHelperTextSpace }) {
+export function TextFieldHelperText({ helperText = '', keepHelperTextSpace }) {
   if (!helperText && !keepHelperTextSpace) return null;
 
   return <Text style={styles.helperText}>{helperText}</Text>;
@@ -52,7 +52,7 @@ export default function TextField({
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   label: {
     marginBottom: 10,
   },

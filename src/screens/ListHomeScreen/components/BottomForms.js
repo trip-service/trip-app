@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, Text, useTheme } from 'react-native-paper';
 
+import BottomSheetTextField from '~/components/BottomSheetTextField';
+import FixedBottomSheet from '~/components/FixedBottomSheet';
 import SearchBar from '~/components/SearchBar';
-import TextField from '~/components/TextField';
 import { FAKE_SEARCH_LIST } from '~/data/list';
 
 function AddForm({ onClose }) {
   return (
     <View style={styles.addContainer}>
-      <TextField label="創建新的行程" placeholder="行程標題" />
+      <BottomSheetTextField label="創建新的行程" placeholder="行程標題" />
       <View style={styles.addActions}>
         <Button mode="outlined" onPress={onClose}>
           取消
@@ -70,11 +71,38 @@ function ImportForm({ onClose }) {
   );
 }
 
-export default function BottomForms({ type, onClose }) {
-  if (!type) return null;
-  if (type === 'add') return <AddForm onClose={onClose} />;
-  return <ImportForm onClose={onClose} />;
-}
+const BottomForms = ({ type, onChange }) => {
+  const sheetRef = useRef(null);
+
+  const handleClose = () => {
+    sheetRef.current.close();
+  };
+
+  // BottomSheet 無法同時存在兩個 bottom sheets
+  // 用變數控制 snapPoints 使用上會出現 bug
+  if (type === 'add')
+    return (
+      <FixedBottomSheet
+        ref={sheetRef}
+        index={0}
+        height={170}
+        onChange={onChange}
+      >
+        <AddForm onClose={handleClose} />
+      </FixedBottomSheet>
+    );
+
+  return (
+    <FixedBottomSheet
+      ref={sheetRef}
+      index={0}
+      height="100%"
+      onChange={onChange}
+    >
+      <ImportForm onClose={handleClose} />
+    </FixedBottomSheet>
+  );
+};
 
 const styles = StyleSheet.create({
   addContainer: { padding: 20 },
@@ -112,8 +140,8 @@ ImportForm.propTypes = {
 };
 
 BottomForms.propTypes = {
-  type: PropTypes.oneOf(['add', 'import']),
-  onClose: AddForm.propTypes.onClose,
+  type: PropTypes.oneOf(['add', 'import']).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 RenderItem.propTypes = {
@@ -122,3 +150,5 @@ RenderItem.propTypes = {
   }),
   borderColor: PropTypes.string,
 };
+
+export default BottomForms;
