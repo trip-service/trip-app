@@ -55,7 +55,8 @@
     "expo-community-flipper": "^45.1.0",
     "gcz": "^1.0.5",
     "husky": "^8.0.1",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "redux-devtools-extension": "^2.13.9"
   },
   "private": true,
   "husky": {

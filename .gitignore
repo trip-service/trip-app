@@ -15,3 +15,5 @@ web-build/
 
 # private config
 pc-api-*.json
+
+package-lock.json

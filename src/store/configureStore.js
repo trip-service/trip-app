@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
@@ -12,7 +13,7 @@ import rootReducer from '~/reducers';
 import rootSaga from '~/sagas';
 
 const persistConfig = {
-  key: 'storeCache',
+  key: '!@#$%^tripstoreCache',
   storage: AsyncStorage,
   blacklist: [],
 };
@@ -28,9 +29,13 @@ const configureStore = () => {
     snackbarHandlerMiddleware,
   ];
 
+  const composeEnhancers = __DEV__
+    ? composeWithDevTools
+    : compose;
+
   const store = createStore(
     persistedReducer,
-    compose(applyMiddleware(...middlewares))
+    composeEnhancers(applyMiddleware(...middlewares))
   );
 
   const persistor = persistStore(store);

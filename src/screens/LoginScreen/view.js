@@ -7,7 +7,7 @@ const HomeScreen = () => {
   console.log(theme);
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home</Text>
+      <Text>Login Screen</Text>
     </View>);
 };
 
