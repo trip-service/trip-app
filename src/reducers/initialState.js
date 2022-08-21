@@ -3,7 +3,7 @@ export const settingState = {
 };
 
 export const authState = {
-  isAuth: false,
+  isAuth: true,
 };
 
 export const taskState = {

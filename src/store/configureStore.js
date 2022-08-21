@@ -13,7 +13,7 @@ import rootReducer from '~/reducers';
 import rootSaga from '~/sagas';
 
 const persistConfig = {
-  key: '!@#$%^tripstoreCache',
+  key: '!#@$%^tripstoreCache',
   storage: AsyncStorage,
   blacklist: [],
 };
