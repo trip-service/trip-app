@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 
-import HomeScreen from '~/screens/HomeScreen';
+import TripDetailScreen from '~/screens/TripDetailScreen';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -11,7 +11,7 @@ const AuthRoutes = () => {
         <AuthStack.Screen
           name="Home"
           options={{ headerShown: false }}
-          component={HomeScreen}
+          component={TripDetailScreen}
         />
       </AuthStack.Navigator>
     );
