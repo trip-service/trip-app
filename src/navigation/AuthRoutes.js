@@ -19,7 +19,7 @@ const AuthRoutes = () => {
           name="CreateTripNodeModal"
           component={CreateTripNodeModalScreen}
           options={{
-            title: "設定地區",
+            title: "新增詳細行程",
           }}
         />
         </AuthStack.Group>
