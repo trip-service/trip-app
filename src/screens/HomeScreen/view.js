@@ -4,7 +4,7 @@ import { Searchbar, Button } from 'react-native-paper';
 import EmptyContent from './components/EmptyContent';
 import TripCard from './components/TripCard';
 
-const {width, height} = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -41,10 +41,10 @@ const HomeScreen = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <View style={{width, position: 'absolute', bottom: 20}}>
+      <View style={{ width, position: 'absolute', bottom: 20 }}>
         <Button mode="contained" onPress={() => console.log('Pressed')}>
-        新增行程
-      </Button>
+          新增行程
+        </Button>
       </View>
     </View>
   );
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   searchbarStyle: { marginLeft: 22, marginRight: 22, marginBottom: 22 },
-  contentContainerStyle: {marginTop: 12, paddingBottom: 64},
+  contentContainerStyle: { marginTop: 12, paddingBottom: 64 },
 });
 export default HomeScreen;

@@ -2,7 +2,8 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import TripDetailCard from './components/TripDetailCard';
 
-const TripDetailScreen = () => {
+const TripDetailScreen = (props) => {
+  const {navigation} = props;
   return (
     <View style={styles.containerStyle}>
       <TripDetailCard />
@@ -12,7 +13,7 @@ const TripDetailScreen = () => {
         </View>
 
         <View style={{flex: 1,alignItems: 'center'}}>
-          <Button mode="contained" >新增詳細行程</Button>
+          <Button mode="contained" onPress={() => navigation.navigate("CreateTripNodeModal")}>新增詳細行程</Button>
         </View>
       </View>
     </View>
