@@ -11,7 +11,8 @@ import { Button, Chip } from 'react-native-paper';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import TextInput from './components/TextInput';
 
-const CreateTripNodeModalScreen = () => {
+const CreateTripNodeModalScreen = (props) => {
+  const {navigation} = props;
   return (
     <ScrollView style={styles.containerStyle}>
       <TextInput dense activeOutlineColor="#000" label="標題" mode="outlined" />
@@ -62,12 +63,12 @@ const CreateTripNodeModalScreen = () => {
       </View>
       <View style={styles.rowStyle}>
         <View style={styles.buttonContainerStyle}>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
+          <Button mode="contained" onPress={() => navigation.goBack(null)}>
             新增
           </Button>
         </View>
         <View style={styles.buttonContainerStyle}>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
+          <Button mode="contained" onPress={() => navigation.goBack(null)}>
             取消
           </Button>
         </View>
