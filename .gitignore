@@ -17,3 +17,13 @@ web-build/
 pc-api-*.json
 
 package-lock.json
+
+# expo app settings
+app.config.js
+
+# firebase config files
+GoogleService-Info.plist
+google-services.json
+
+# Env file
+.env
