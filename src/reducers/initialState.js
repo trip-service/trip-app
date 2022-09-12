@@ -4,6 +4,8 @@ export const settingState = {
 
 export const authState = {
   isAuth: false,
+  token: null,
+  info: {},
 };
 
 export const taskState = {
