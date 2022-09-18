@@ -2,8 +2,9 @@ import types from '~/constants/actionTypes';
 
 import { authState } from './initialState';
 
-const loginSuccess = (auth, payload) =>
-  auth.merge({ ...payload, isAuth: true });
+const loginSuccess = (auth, payload) =>({
+  ...auth, ...payload, isAuth: true
+});
 
 const logoutSuccess = auth => auth.merge({ isAuth: false });
 

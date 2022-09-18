@@ -1,13 +1,34 @@
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { StyleSheet, Platform, View, Text, Dimensions } from 'react-native';
 import { Avatar, Button } from 'react-native-paper';
+import Constants from 'expo-constants';
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const { width } = Dimensions.get('window');
 
-const HomeScreen = () => {
-  const theme = useTheme();
-  console.log(theme);
+const {extra} = Constants.manifest;
+
+const HomeScreen = (props) => {
+  const {handleLogin} = props;
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    androidClientId: extra.androidClientId,
+    iosClientId: extra.iosClientId,
+    expoClientId: extra.expoClientId,
+  });
+
+  React.useEffect(() => {
+    if (response?.type === "success") {
+      handleLogin({
+        os: Platform.OS,
+        token: response.authentication.accessToken,
+        notificationToken: "testdemo",
+      });
+    }
+  }, [response]);
+
   return (
     <View style={styles.containerStyle}>
       <View>
@@ -25,7 +46,9 @@ const HomeScreen = () => {
         <Text>走出屬於你的旅程</Text>
       </View>
       <View style={styles.marginTop26}>
-        <Button mode="contained" onPress={() => console.log('Pressed')}>
+        <Button
+          mode="contained"
+          onPress={() => promptAsync({useProxy: true})}>
           以 Google 進入
         </Button>
       </View>

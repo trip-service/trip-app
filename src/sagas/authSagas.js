@@ -1,10 +1,15 @@
-import { put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
+import { loginResult } from '~/apis/api';
 
 import types from '~/constants/actionTypes';
 
-const okLogin = () => ({
+const okLogin = (payload) => ({
   type: types.LOGIN_SUCCESS,
-  payload: {},
+  payload,
+  snackbar: {
+    type: "info",
+    text: "登入成功"
+  },
 });
 
 const errLogin = ({ message }) => {
@@ -13,12 +18,17 @@ const errLogin = ({ message }) => {
     payload: {
       message,
     },
+    snackbar: {
+      type: "info",
+      text: message
+    },
   };
 };
 
-export function* loginSaga() {
+export function* loginSaga({payload}) {
   try {
-    yield put(okLogin());
+    const result = yield call(loginResult, payload);
+    yield put(okLogin(result));
   } catch (error) {
     const errorAction = errLogin(error);
     yield put(errorAction);
